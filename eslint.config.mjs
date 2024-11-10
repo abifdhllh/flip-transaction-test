@@ -36,6 +36,7 @@ export default [
       'import/no-extraneous-dependencies': 2,
       'import/no-named-as-default-member': 0,
       'import/order': 0,
+      'import/no-extraneous-dependencies': 0,
       'no-const-assign': 2,
       'no-constant-binary-expression': 2,
       'no-extra-parens': [2, 'functions'],

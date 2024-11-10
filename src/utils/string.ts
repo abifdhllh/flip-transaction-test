@@ -16,7 +16,7 @@ function formatCurrency(value?: number | string, currency?: string) {
 
 function formatDate(value = '') {
   if (value) {
-    const date = new Date(value?.replace(' ', 'T')); // Convert to Date object
+    const date = new Date(value?.replace(' ', 'T'));
 
     const formattedDate = new Intl.DateTimeFormat('id-ID', {
       day: 'numeric',
