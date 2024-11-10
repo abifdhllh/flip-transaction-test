@@ -28,39 +28,16 @@ const SearchBar: FC<Props> = ({
 
   return (
     <View
-      style={[
-        backgrounds.default,
-        gutters.padding_16,
-        gutters.gap_12,
-        layout.row,
-        layout.itemsCenter,
-        borders.rounded_8,
-      ]}
+      style={[layout.row, layout.itemsCenter, gutters.gap_12, layout.flex_1]}
     >
-      <View
-        style={[layout.row, layout.itemsCenter, gutters.gap_12, layout.flex_1]}
-      >
-        <IconByVariant path="search" stroke={colors.gray200} />
-        <TextInput
-          onChangeText={onChangeText}
-          placeholder={placeholder}
-          placeholderTextColor={colors.gray200}
-          style={[gutters.margin_0, gutters.padding_0, layout.flex_1]}
-          value={value}
-        />
-      </View>
-      <TouchableOpacity
-        activeOpacity={0.8}
-        style={[layout.row, layout.itemsCenter]}
-      >
-        <Text style={[fonts.orange, fonts.bold]}>URUTKAN</Text>
-        <IconByVariant
-          height={20}
-          path="chevron-down"
-          stroke={colors.orange}
-          width={20}
-        />
-      </TouchableOpacity>
+      <IconByVariant path="search" stroke={colors.gray200} />
+      <TextInput
+        onChangeText={onChangeText}
+        placeholder={placeholder}
+        placeholderTextColor={colors.gray200}
+        style={[gutters.margin_0, gutters.padding_0, layout.flex_1]}
+        value={value}
+      />
     </View>
   );
 };
