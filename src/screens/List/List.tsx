@@ -1,10 +1,11 @@
+import type { ListRenderItemInfo } from '@shopify/flash-list';
 import type { FC } from 'react';
-import type { ListRenderItemInfo } from 'react-native';
 import type { TransactionSchema } from '@/hooks/domain/transaction/schema';
 import type { RootScreenProps } from '@/navigation/types';
 
+import { FlashList } from '@shopify/flash-list';
 import React, { useCallback, useMemo, useState } from 'react';
-import { FlatList, View } from 'react-native';
+import { View } from 'react-native';
 
 import { useTheme } from '@/theme';
 import { useTransaction } from '@/hooks';
@@ -107,7 +108,7 @@ const List: FC<Props> = ({ navigation: { navigate } }) => {
   }, [data, filterData, sortData]);
 
   const renderTransactionItem = useCallback(
-    ({ item }: ListRenderItemInfo<TransactionSchema>) => {
+    ({ item, index }: ListRenderItemInfo<TransactionSchema>) => {
       const {
         sender_bank: senderBank,
         beneficiary_bank: beneficiaryBank,
@@ -145,6 +146,10 @@ const List: FC<Props> = ({ navigation: { navigate } }) => {
     [],
   );
 
+  const renderItemSeparator = useCallback(() => {
+    return <View style={gutters.marginBottom_12} />;
+  }, []);
+
   return (
     <SafeScreen isError={isError} onResetError={refetch}>
       <View style={[backgrounds.gray50, layout.flex_1, gutters.gap_12]}>
@@ -168,13 +173,11 @@ const List: FC<Props> = ({ navigation: { navigate } }) => {
           />
         </View>
 
-        <FlatList
-          contentContainerStyle={[
-            gutters.gap_12,
-            gutters.paddingHorizontal_12,
-            gutters.paddingBottom_12,
-          ]}
+        <FlashList
+          ItemSeparatorComponent={renderItemSeparator}
+          contentContainerStyle={{ paddingHorizontal: 12, paddingBottom: 12 }}
           data={transformedData}
+          estimatedItemSize={130}
           keyExtractor={(item) => `transaction-item-${item?.id}`}
           onRefresh={refetch}
           refreshing={isFetching}

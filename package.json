@@ -21,6 +21,7 @@
     "@react-native-masked-view/masked-view": "^0.3.1",
     "@react-navigation/native": "^6.1.18",
     "@react-navigation/stack": "^6.4.1",
+    "@shopify/flash-list": "^1.7.2",
     "@tanstack/react-query": "^5.59.8",
     "intl-pluralrules": "^2.0.1",
     "ky": "^1.7.2",
