@@ -7,22 +7,17 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useTheme } from '@/theme';
 import { Paths } from '@/navigation/paths';
 
-import { Detail, List, Startup } from '@/screens';
+import { Detail, List } from '@/screens';
 
 const Stack = createStackNavigator<RootStackParamList>();
 
 function ApplicationNavigator() {
-  const { variant, navigationTheme, layout } = useTheme();
+  const { variant, navigationTheme } = useTheme();
 
   return (
     <SafeAreaProvider>
       <NavigationContainer theme={navigationTheme}>
         <Stack.Navigator key={variant}>
-          <Stack.Screen
-            component={Startup}
-            name={Paths.Startup}
-            options={{ title: 'Startup', headerShown: false }}
-          />
           <Stack.Screen
             component={List}
             name={Paths.List}

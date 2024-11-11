@@ -2,8 +2,10 @@ import type { FC } from 'react';
 import type { Paths } from '@/navigation/paths';
 import type { RootScreenProps } from '@/navigation/types';
 
-import React from 'react';
+import Clipboard from '@react-native-clipboard/clipboard';
+import React, { useCallback } from 'react';
 import { Text, TouchableOpacity, View } from 'react-native';
+import Toast from 'react-native-toast-message';
 
 import { useTheme } from '@/theme';
 
@@ -27,6 +29,17 @@ const Detail: FC<Props> = ({ route: { params }, navigation: { goBack } }) => {
     date,
   } = params || {};
 
+  const handleCopyTransactionId = useCallback(() => {
+    Clipboard.setString(transactionId);
+
+    Toast.show({
+      text1: 'Berhasil salin',
+      text2: 'ID transaksi berhasil disalin',
+      type: 'success',
+      position: 'bottom',
+    });
+  }, [transactionId]);
+
   return (
     <SafeScreen>
       <View
@@ -46,7 +59,11 @@ const Detail: FC<Props> = ({ route: { params }, navigation: { goBack } }) => {
           <Text style={[fonts.reverseDefault, fonts.bold]}>
             ID Transaksi: #{transactionId}
           </Text>
-          <TouchableOpacity activeOpacity={0.8} hitSlop={layout.hitslopValue}>
+          <TouchableOpacity
+            activeOpacity={0.8}
+            hitSlop={layout.hitslopValue}
+            onPress={handleCopyTransactionId}
+          >
             <IconByVariant
               height={16}
               path="copy"

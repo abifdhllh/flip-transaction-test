@@ -7,8 +7,8 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { FlatList, View } from 'react-native';
 
 import { useTheme } from '@/theme';
+import { useTransaction } from '@/hooks';
 import { BANK_NAME_MAPPING } from '@/hooks/domain/transaction/constant';
-import useTransaction from '@/hooks/domain/transaction/useTransaction';
 import { Paths } from '@/navigation/paths';
 
 import { SearchBar, Sort } from '@/components/molecules';
