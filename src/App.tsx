@@ -6,6 +6,7 @@ import { MMKV } from 'react-native-mmkv';
 
 import { ThemeProvider } from '@/theme';
 import ApplicationNavigator from '@/navigation/Application';
+import Toast from 'react-native-toast-message';
 
 export const queryClient = new QueryClient({
   defaultOptions: {
@@ -26,6 +27,7 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider storage={storage}>
           <ApplicationNavigator />
+          <Toast />
         </ThemeProvider>
       </QueryClientProvider>
     </GestureHandlerRootView>

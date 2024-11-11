@@ -1,6 +1,6 @@
 import ky from 'ky';
 
-const prefixUrl = `https://recruitment-test.flip.id/`;
+const prefixUrl = `${process.env.API_URL ? process.env.API_URL : ''}/`;
 
 export const instance = ky.extend({
   prefixUrl,
